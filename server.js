@@ -21,7 +21,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static( "./public"));
 
 
-// ROUTES 
+// ROUTES ================================================
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine","handlebars");

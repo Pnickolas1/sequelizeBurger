@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var exphbs = require('express-handlebars');
 
+
 var app = express();
 var port  = process.env.PORT || 8000;
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(methodOverride("_method"));
 
 //SERVE STATIC CONTENT FOR THE APP FORM THE "PUBLIC" DIRECTORY IN TEH APPLICATION DIRECTORY
 app.use(express.static( "./public"));
@@ -28,6 +30,10 @@ app.set("view engine","handlebars");
 
 
 require("./routes/html-routes.js")(app);
+
+require("./routes/api-routes.js")(app);
+
+
 
 
 //Syncing the sequelize app and starting our express app
